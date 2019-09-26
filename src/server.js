@@ -20,8 +20,7 @@ io.on('connection', (client) => {
         headers
     } } = client;
 
-    // TODO: implementation
-
+    // TODO 
 });
 
 app.listen(PORT, function () {
