@@ -14,11 +14,18 @@ const app = http.createServer();
 const io = socketio(app, { origins: '*:*' });
 const { PORT } = config || {}
 
-io.on('connection', (client) => {
+io.on('connection', (socket) => {
     const { request: {
         connection,
         headers
-    } } = client;
+    } } = socket;
+
+    socket.on('event:draw', (data) => {
+        socket.broadcast.emit('broadcast:draw', {
+            datetime: new Date().toString(),
+            value: data
+        })
+    });
 
     // TODO 
 });
